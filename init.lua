@@ -1,24 +1,28 @@
-local home_dir = vim.env.HOME;
+local home_dir = vim.env.HOME
 
-local test = vim.fn.stdpath("config") .. "/pack/treesitter/start/nvim-treesitter"
-print(test)
-vim.opt.runtimepath:append(test)
+local fn  = vim.fn
+local api = vim.api
 
-local custom_path = home_dir .. "/.config/nvim/?.lua;" .. home_dir .. "/.config/nvim/?/init.lua;?.lua;?/init.lua" 
-package.path = package.path .. ";" .. custom_path
+local config_root = fn.stdpath("config")
+local lua_paths = {
+  config_root .. "/lua/?.lua",
+  config_root .. "/lua/?/init.lua",
+}
 
---local custom_path = home_dir .. "/.config/nvim/plugin/?.lua;" .. home_dir .. "/.config/nvim/plugin/?/init.lua"
---package.path = package.path .. ";" .. custom_path
+-- 2) Scan & prepend every `lua/` folder under 'runtimepath'
+local rp = api.nvim_list_runtime_paths()
+for _, path in ipairs(rp) do
+  -- if there's a lua/ subfolder, add it
+  local lua_dir = path .. "/lua"
+  if fn.isdirectory(lua_dir) == 1 then
+    table.insert(lua_paths, 1, lua_dir .. "/?.lua")
+    table.insert(lua_paths, 1, lua_dir .. "/?/init.lua")
+  end
+end
 
---local custom_path = home_dir .. "/.config/nvim/plugin/nvim-treesitter/lua/?.lua" 
---package.path = package.path .. ";" .. custom_path
+-- 3) Build the new package.path
+package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 
---local custom_path = home_dir .. "/.config/nvim/plugin/?/plugin/?.lua"
---package.path = package.path .. ";" .. custom_path
-
---local custom_path = home_dir .. "/.config/nvim/?.so"
---package.cpath = package.path .. ";" .. custom_path
-
-
-require("after.config")
-require("after.keymap")
+require("config.config")
+require("config.keymap")
+require("config.treesitter")
