@@ -21,4 +21,3 @@ vim.opt.wrap = true
 
 vim.cmd("syntax on")
 vim.cmd("set clipboard=\"unnamedplus\"")
-vim.cmd("colorscheme wildcharm")
