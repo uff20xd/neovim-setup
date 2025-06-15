@@ -23,7 +23,7 @@ end
 -- 3) Build the new package.path
 package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 
-require("config.config")
 require("config.keymap")
-require("config.treesitter")
+require("config.config")
 require("config.autopairs")
+require("config.treesitter")

@@ -19,7 +19,6 @@ vim.opt.smarttab = true
 vim.opt.ruler = true            
 vim.opt.wrap = true
 
-vim.clipboard.register = "unnamedplus"
-
 vim.cmd("syntax on")
+vim.cmd("set clipboard=\"unnamedplus\"")
 vim.cmd("colorscheme wildcharm")
