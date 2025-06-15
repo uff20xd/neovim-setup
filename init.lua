@@ -13,6 +13,7 @@ local lua_paths = {
 local rp = api.nvim_list_runtime_paths()
 for _, path in ipairs(rp) do
   -- if there's a lua/ subfolder, add it
+  print(path)
   local lua_dir = path .. "/lua"
   if fn.isdirectory(lua_dir) == 1 then
     table.insert(lua_paths, 1, lua_dir .. "/?.lua")
@@ -26,3 +27,4 @@ package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 require("config.config")
 require("config.keymap")
 require("config.treesitter")
+require("config.autopairs")
