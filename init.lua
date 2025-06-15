@@ -1,3 +1,2 @@
-require(config)
-require(plugin_sources)
-
+require("configs")
+require("plugin_sources")
