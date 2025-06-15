@@ -1,10 +1,25 @@
-vim.opt.encoding = 'utf-8'          -- Set encoding to UTF-8
-vim.opt.number = true                -- Show line numbers
-vim.opt.relativenumber = true        -- Show relative line numbers
-vim.opt.tabstop = 4                  -- Number of spaces that a <Tab> counts for
-vim.opt.shiftwidth = 4                -- Number of spaces to use for each step of (auto)inden
-vim.opt.expandtab = true             -- Use spaces instead of tabs
+vim.opt.encoding = 'utf-8'          
+vim.opt.tabstop = 2                 
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
+vim.opt.undofile = true            
+vim.opt.undolevels = 10000
+
+vim.opt.number = true               
+vim.opt.relativenumber = true       
+vim.opt.linebreak = true       
+vim.opt.expandtab = true            
+vim.opt.breakindent = true            
+vim.opt.cursorline = true            
+vim.opt.scrolloff = 8
+vim.opt.smarttab = true            
+vim.opt.conceallevel = 1
+vim.opt.smarttab = true            
+vim.opt.ruler = true            
+vim.opt.wrap = true
+
+vim.clipboard.register = "unnamedplus"
 
 vim.cmd("syntax on")
 vim.cmd("colorscheme wildcharm")
