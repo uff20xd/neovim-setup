@@ -9,12 +9,12 @@ require "nvim-treesitter.query_predicates"
 
 local M = {}
 
-function M.setup()
-  utils.setup_commands("install", install.commands)
-  utils.setup_commands("info", info.commands)
-  utils.setup_commands("configs", configs.commands)
-  configs.init()
-end
+--function M.setup()
+  --utils.setup_commands("install", install.commands)
+  --utils.setup_commands("info", info.commands)
+  --utils.setup_commands("configs", configs.commands)
+  --configs.init()
+--end
 
 M.define_modules = configs.define_modules
 M.statusline = statusline.statusline
