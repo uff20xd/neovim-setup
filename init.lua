@@ -1,2 +1,1 @@
-require("configs")
-require("plugin_sources")
+print("Welcome to Badvim")
