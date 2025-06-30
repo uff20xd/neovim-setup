@@ -1,37 +1,37 @@
-local palette = require('yugen.palette')
+local palette = require('yugener.palette')
 
-local yugen = {}
+local yugener = {}
 
-yugen.normal = {
+yugener.normal = {
 	a = { fg = palette.color800, bg = palette.color100, gui = 'bold' },
 	b = { fg = palette.color100, bg = palette.color600 },
 	c = { fg = palette.color400, bg = palette.none },
 }
 
-yugen.insert = {
+yugener.insert = {
 	a = { fg = palette.color800, bg = palette.color100, gui = 'bold' },
 	b = { fg = palette.color100, bg = palette.color600 },
 }
 
-yugen.visual = {
+yugener.visual = {
 	a = { fg = palette.color800, bg = palette.color100, gui = 'bold' },
 	b = { fg = palette.color100, bg = palette.color600 },
 }
 
-yugen.replace = {
+yugener.replace = {
 	a = { fg = palette.color800, bg = palette.color100, gui = 'bold' },
 	b = { fg = palette.color100, bg = palette.color600 },
 }
 
-yugen.command = {
+yugener.command = {
 	a = { fg = palette.color800, bg = palette.color100, gui = 'bold' },
 	b = { fg = palette.color100, bg = palette.color600 },
 }
 
-yugen.inactive = {
+yugener.inactive = {
 	a = { fg = palette.blueGray3, bg = palette.background1, gui = 'bold' },
 	b = { fg = palette.blueGray3, bg = palette.background1 },
 	c = { fg = palette.blueGray3, bg = palette.none },
 }
 
-return yugen
+return yugener

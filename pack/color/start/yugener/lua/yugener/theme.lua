@@ -1,7 +1,7 @@
 local M = {}
 
 function M.get(config)
-  local p = require 'yugen.palette'
+  local p = require 'yugener.palette'
 
   local theme = {}
   local groups = config.groups or {}
@@ -78,7 +78,7 @@ function M.get(config)
 
     Constant = { fg = p.color200 },
     String = { fg = p.primary },
-    Character = { fg = p.successuccess },
+    Character = { fg = p.success },
     Number = { fg = p.primary },
     Boolean = { fg = p.primary },
     Float = { fg = p.primary },
@@ -91,7 +91,7 @@ function M.get(config)
     Repeat = { fg = p.color200 },
     Label = { fg = p.color200 },
     Operator = { fg = p.color400 },
-    Keyword = { fg = p.color400 },
+    Keyword = { fg = p.keyword },
     Exception = { fg = p.color200 },
 
     PreProc = { fg = p.color200 },
@@ -102,9 +102,9 @@ function M.get(config)
     Special = { fg = p.color200 },
     Tag = { fg = p.primary },
     Delimiter = { fg = p.color200 },
-    SpecialComment = { fg = p.color500 },
+    SpecialComment = { fg = p.comments },
 
-    Comment = { fg = p.color500 },
+    Comment = { fg = p.comments},
 
     Underlined = { style = 'underline' },
     Bold = { style = 'bold' },
@@ -159,9 +159,9 @@ function M.get(config)
     TSInclude = { fg = p.color200 },
     ['@keyword.rescript'] = { fg = p.primary },
     ['@keyword'] = { link = 'Keyword' },
-    ['@keyword.return'] = { fg = p.color300 },
-    ['@keyword.function'] = { fg = p.color300 },
-    ['@keyword.operator'] = { fg = p.color400 },
+    ['@keyword.return'] = { fg = p.functions },
+    ['@keyword.function'] = { fg = p.functions },
+    ['@keyword.operator'] = { fg = p.operator },
     ['@label'] = { fg = p.color500 },
     ['@method'] = { fg = p.primary },
     ['@operator'] = { fg = 'color400' },
@@ -169,7 +169,7 @@ function M.get(config)
     ['@property'] = { fg = p.color300 },
     ['@punctuation.delimiter'] = { fg = groups.punctuation },
     ['@punctuation.special'] = { fg = groups.punctuation },
-    ['@punctuation.bracket'] = { fg = p.color400 },
+    ['@punctuation.bracket'] = { fg = groups.punctuation },
     ['@string'] = { fg = p.color400 },
     ['@string.escape'] = { fg = p.color100 },
     ['@tag'] = { fg = p.primary },

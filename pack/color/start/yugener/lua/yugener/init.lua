@@ -1,4 +1,4 @@
-local utils = require 'yugen.utils'
+local utils = require 'yugener.utils'
 
 local M = {}
 
@@ -7,6 +7,7 @@ local config = {
   dark_variant = 'main',
   transparent = false,
   transparent_statusline = false,
+  transparent_background = false,
   disable_italics = false,
   dim_nc_background = false,
 
@@ -16,7 +17,7 @@ local config = {
     border = 'color600',
     comment = 'color500',
     link = 'color200',
-    punctuation = 'color500',
+    punctuation = 'color300',
 
     error = 'error',
     hint = 'success',
@@ -69,9 +70,9 @@ function M.colorscheme()
   end
 
   vim.opt.termguicolors = true
-  vim.g.colors_name = 'yugen'
+  vim.g.colors_name = 'yugener'
 
-  local theme = require('yugen.theme').get(config)
+  local theme = require('yugener.theme').get(config)
 
   for group, color in pairs(theme) do
     if config.highlight_groups[group] == nil then

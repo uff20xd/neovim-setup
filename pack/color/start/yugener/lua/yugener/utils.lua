@@ -8,7 +8,7 @@ local function rgb(color)
   color = vim.api.nvim_get_color_by_name(color)
 
   if color == -1 then
-    color = vim.opt.background:get() == 'dark' and 000 or 255255255
+    color = vim.opt.background:get() == 'dark' -- and 000 or 255255255
   end
 
   return { byte(color, 16), byte(color, 8), byte(color, 0) }
@@ -22,7 +22,7 @@ local function parse_color(color)
   color = color:lower()
 
   if not color:find '#' and color ~= 'none' then
-    color = require('yugen.palette')[color] or vim.api.nvim_get_color_by_name(color)
+    color = require('yugener.palette')[color] or vim.api.nvim_get_color_by_name(color)
   end
 
   return color
