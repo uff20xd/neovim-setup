@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
 
 --all mode keybinds
-vim.keymap.set( "n",'<C-l>', '<CR>', { noremap = true, silent = true })  -- Enter press for netrw
-vim.keymap.set( "n", '<C-h>', '-', { noremap = true, silent = true })  -- Minus press for netrw
+vim.keymap.set( "n",'<C-l>', '<CR>', { noremap = false, silent = true })  -- Enter press for netrw
+vim.keymap.set( "n", '<C-h>', '-', { noremap = false, silent = true })  -- Minus press for netrw
 
 --normal mode keybinds
 vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })  -- Save file
