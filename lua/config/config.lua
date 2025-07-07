@@ -18,7 +18,7 @@ vim.opt.conceallevel = 1
 vim.opt.smarttab = true            
 vim.opt.ruler = true            
 vim.opt.wrap = true
-vim.opt.makeprg = rustc build.rs && ./build
+vim.opt.makeprg = "rustc build.rs && ./build"
 
 vim.cmd("syntax on")
 vim.cmd("set clipboard=\"unnamedplus\"")
