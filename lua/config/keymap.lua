@@ -17,6 +17,10 @@ vim.keymap.set('n', '<M-j>', ':wincmd j<CR> ', { noremap = true, silent = true})
 vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Open file explorer
 vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Open file explorer
 
+vim.keymap.set('n', '<M-l>', ':bnext<CR> ', { noremap = true, silent = true})  -- goes forward a buffer
+vim.keymap.set('n', '<M-l>', ':bprevious<CR> ', { noremap = true, silent = true})  -- goes backwards a buffer
+
+
 --insert mode keybinds
 vim.keymap.set("i", "<C-j>", "<", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", ">", { noremap = true, silent = true })
