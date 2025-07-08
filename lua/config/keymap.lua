@@ -11,7 +11,7 @@ vim.keymap.set('n', '<leader>e', ':e .<CR>', { noremap = true, silent = true }) 
 vim.keymap.set('n', '<leader>t', ':terminal <CR>', { noremap = true, silent = true })  -- Open file explorer
 vim.keymap.set('n', '<leader>bf', ':b ', { noremap = true, silent = false})  -- Open file explorer
 vim.keymap.set('n', '<leader>bd', ':bdelete <CR>', { noremap = true, silent = true})  -- Open file explorer
-vim.keymap.set('n', '<leader>ba', ':badd ', { noremap = true, silent = false})  -- Open file explorer
+vim.keymap.set('n', '<leader>ba', ':bnew ', { noremap = true, silent = false})  -- Open file explorer
 vim.keymap.set('n', '<M-h>', ':wincmd h<CR> ', { noremap = true, silent = true})  -- Open file explorer
 vim.keymap.set('n', '<M-j>', ':wincmd j<CR> ', { noremap = true, silent = true})  -- Open file explorer
 vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Open file explorer

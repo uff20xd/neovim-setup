@@ -42,18 +42,19 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'l', '<CR>', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'r', 'R', { remap = true, silent = true, buffer = true })
     local unbinds = {
-      'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp', 'i', 'I', 'mb', 'mc', 'md',
-      'me', 'mf', 'mF', 'mg', 'mh', 'mm', 'mr', 'mt', 'mT', 'mu', 'mv', 'mx', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
-      'qL', 's', 'S', 't', 'u', 'U', 'v', 'x', 'X'
+      'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp', 'i', 'I', 'mb', 'md',
+      'me', 'mg', 'mh', 'mr', 'mt', 'mT', 'mu', 'mv', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
+      'qL', 's', 'S', 't', 'u', 'U',  'X'
     }
     for _, value in pairs(unbinds) do
       vim.keymap.set('n', value, '<CMD>lua print("Keybind \'' .. value .. '\' has been removed")<CR>', { noremap = true, silent = true, buffer = true })
     end
   end
 })
+
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 0
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
-vim.g.netrw_altfile = 0 -- (4 to open in other window)
+vim.g.netrw_altfile = 1 -- (4 to open in other window)
 
