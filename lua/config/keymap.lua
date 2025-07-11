@@ -20,7 +20,7 @@ vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})
 vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
 vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
 
-vim.keymap.set('n', '<Tab>', ':bNext<CR> ', { noremap = true, silent = true})  -- Moving between buffer
+vim.keymap.set('n', '<Tab>', ':bnext<CR> ', { noremap = true, silent = true})  -- Moving between buffer
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR> ', { noremap = true, silent = true})  -- Moving between buffer
 
 vim.keymap.set('n', '<leader>sv', ':vsplit<CR> ', { noremap = true, silent = true})  -- Splits vertically
