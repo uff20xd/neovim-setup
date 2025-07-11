@@ -56,6 +56,6 @@ vim.opt.timeoutlen = 500
 vim.opt.makeprg = "rustc build.rs && ./build"
 
 -- Clipboard
-vim.g.clipboard = "wl-copy"
+--vim.g.clipboard = "wl-copy"
 vim.cmd("set clipboard+=unnamedplus")
 --vim.opt.clipboard:append("unnamedplus")
