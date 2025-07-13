@@ -8,7 +8,7 @@ ts.setup {
   ensure_installed = {
     "c", "lua", "python",
     "javascript", "html", "css", "rust", "zig",
-    "haskell", "nix", "cpp", "markdown"
+    "haskell", "nix", "cpp", "markdown", "commomlisp",
   },
   highlight = {
     enable = true,
