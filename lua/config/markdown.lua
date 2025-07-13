@@ -1,4 +1,3 @@
-local m = require("markdown")
+require("markdown").setup({
 
-m.setup({
 })
