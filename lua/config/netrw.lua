@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 0
+vim.g.netrw_liststyle = 1
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
