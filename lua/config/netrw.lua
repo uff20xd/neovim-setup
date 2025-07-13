@@ -21,7 +21,6 @@ WinBarNetRW = function()
   return table.concat {
   Path(),
   "%=",
-  " NETRW ",
   "%<",
   }
 end
@@ -43,7 +42,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'r', 'R', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'c', ':cd %<CR>', { remap = true, silent = true, buffer = true })
     local unbinds = {
-      'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp', 'i', 'I', 'mb', 'md',
+      'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp','i','I', 'mb', 'md',
       'me', 'mg', 'mh', 'mr', 'mt', 'mT', 'mu', 'mv', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
       'qL', 's', 'S', 't', 'u', 'U',  'X'
     }
