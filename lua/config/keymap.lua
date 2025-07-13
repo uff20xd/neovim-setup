@@ -34,6 +34,7 @@ vim.keymap.set('n', 'Y', 'y$', { noremap = true, silent = true})  -- Yanks rest 
 --insert mode keybinds
 vim.keymap.set("i", "<C-j>", "<", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", ">", { noremap = true, silent = true })
+vim.keymap.set("", "Ö", ":", { noremap = true, silent = false })
 
 --terminal mode keybinds
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
