@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd('FileType', {
     local unbinds = {
       'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp','i','I', 'mb', 'md',
       'me', 'mg', 'mh', 'mr', 'mt', 'mT', 'mu', 'mv', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
-      'qL', 's', 'S', 't', 'u', 'U',  'X'
+      'qL', 'S', 't', 'u', 'U',  'X'
     }
     for _, value in pairs(unbinds) do
       vim.keymap.set('n', value, '<CMD>lua print("Keybind \'' .. value .. '\' has been removed")<CR>', { noremap = true, silent = true, buffer = true })
@@ -57,4 +57,5 @@ vim.g.netrw_liststyle = 1
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
-
+vim.g.netrw_keepdir = 0
+vim.g.netrw_special_syntax = 3
