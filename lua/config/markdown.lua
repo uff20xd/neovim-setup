@@ -1,1 +1,1 @@
-require("render-markdown").setup({ latex = { enabled = false } })
+require('render-markdown').setup({ latex = { enabled = false } })
