@@ -9,7 +9,7 @@ ts.setup {
     "c", "lua", "python",
     "javascript", "html", "css", "rust", "zig",
     "haskell", "nix", "cpp", "markdown", "commonlisp",
-    "latex",
+    "latex", 
   },
   highlight = {
     enable = true,
