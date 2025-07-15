@@ -58,3 +58,4 @@ vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
 vim.g.netrw_special_syntax = 3
+vim.g.netrw_sort_by = 'exten'
