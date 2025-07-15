@@ -1,4 +1,4 @@
-vim.opt.encoding = 'utf-8'          
+vim.opt.encoding = 'utf-8'
 
 -- Basic
 vim.opt.undofile = true
@@ -6,17 +6,17 @@ vim.opt.undolevels = 10000
 vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
 
 vim.opt.syntax = "on"
-vim.opt.number = true               
-vim.opt.relativenumber = true       
+vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.scrolloff = 11
 
 -- Indent
-vim.opt.breakindent = true            
+vim.opt.breakindent = true
 vim.opt.autoindent = true
 --vim.opt.smarttab = true            
-vim.opt.expandtab = true            
-vim.opt.smarttab = true            
-vim.opt.linebreak = true       
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.linebreak = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
@@ -31,9 +31,9 @@ vim.opt.wildmenu = true
 
 -- Miscelaneas (too lazy to google the spelling)
 vim.opt.termguicolors = true
-vim.opt.cursorline = true            
+vim.opt.cursorline = true
 vim.opt.conceallevel = 0
-vim.opt.ruler = true            
+vim.opt.ruler = true
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 vim.opt.showmode = false
