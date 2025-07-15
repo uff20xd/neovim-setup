@@ -12,10 +12,10 @@ vim.keymap.set('n', '<leader>t', ':terminal <CR>', { noremap = true, silent = tr
 vim.keymap.set('n', '<leader>bf', ':b ', { noremap = true, silent = false})  -- Maybe finds a buffer
 vim.keymap.set('n', '<leader>bd', ':bdelete <CR>', { noremap = true, silent = true})  -- Closes a buffer
 vim.keymap.set('n', '<leader>ba', ':bnew ', { noremap = true, silent = false})  -- Adds a new buffer
-vim.keymap.set('n', '<M-h>', ':wincmd h<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<M-j>', ':wincmd j<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
+-- vim.keymap.set('n', '<M-h>', ':wincmd h<CR> ', { noremap = true, silent = true})  -- Moving between windows
+-- vim.keymap.set('n', '<M-j>', ':wincmd j<CR> ', { noremap = true, silent = true})  -- Moving between windows
+-- vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
+-- vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
 
 vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
 vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
