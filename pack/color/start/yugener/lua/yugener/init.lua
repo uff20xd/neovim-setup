@@ -35,12 +35,12 @@ local config = {
     git_text = 'color200',
 
     headings = {
-      h1 = 'color400',
-      h2 = 'color400',
-      h3 = 'color400',
-      h4 = 'color400',
-      h5 = 'color400',
-      h6 = 'color400',
+      h1 = 'keyword',
+      h2 = 'operator',
+      h3 = 'operator',
+      h4 = 'operator',
+      h5 = 'operator',
+      h6 = 'operator',
     },
   },
   highlight_groups = {},

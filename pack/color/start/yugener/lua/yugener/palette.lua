@@ -6,7 +6,7 @@ local variants = {
     color300 = '#A9A9A9',
 
     --keywords, string
-    color400 = '#898989',
+    color400 = '#669999',
 
     -- constructots line nrs [505050]
     color500 = '#505050',
@@ -21,11 +21,11 @@ local variants = {
     functions = '#ff9789',
     keyword = '#ff9789',
     --ffd289
-    operator = '#ffe689',
+    operator = '#999966',
 
     comments = '#935b00',
     success = '#7EAB8E',
-    warning = '#FFF2AF',
+    warning = '#DDD2AD',
     error = '#F57A7A',
     none = 'none'
   },
