@@ -40,6 +40,7 @@ vim.opt.showmode = false
 vim.opt.lazyredraw = true
 vim.opt.cmdheight = 1
 vim.opt.showmatch = true
+vim.opt.splitright = true
 
 -- File Things
 vim.opt.swapfile = false
@@ -57,4 +58,16 @@ vim.opt.makeprg = "rustc build.rs && ./build"
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
---vim.opt.clipboard:append("unnamedplus")
+
+-- Custom Commands
+vim.api.nvim_create_user_command("Je",
+  function(opts)
+    vim.cmd("noautocmd vnew | terminal " .. opts.fargs[1])
+  end
+  ,{nargs = 1})
+
+vim.api.nvim_create_user_command("RR",
+  function()
+    vim.cmd("noautocmd vnew | terminal ./build")
+  end
+  ,{})
