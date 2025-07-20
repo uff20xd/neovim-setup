@@ -3,7 +3,6 @@ vim.lsp.config("nixd", {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
   root_markers = { 'flake.nix', 'git' },
-  
 })
 vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
@@ -22,17 +21,16 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable("phpactor");
---vim.lsp.config("phpactor", {
---  cmd = { 'phpactor', 'language-server' },
---    filetypes = { 'php' },
---    root_dir = function(pattern)
---      local cwd = vim.uv.cwd()
---      local root = util.root_pattern('composer.json', '.git', '.phpactor.json', '.phpactor.yml')(pattern)
---
---      -- prefer cwd if root is a descendant
---      return util.path.is_descendant(cwd, root) and cwd or root
---    end,
---});
+vim.lsp.config("phpactor", {
+  cmd = { 'phpactor' },
+  filetypes = { 'php' },
+  root_markers = {
+    'composer.json',
+    '.phpactor.json',
+    '.phpactor.yml',
+    '.git',
+  },
+});
 
 --vim.lsp.enable("rust-analyzer")
 --vim.lsp.config("rust-analyzer", {
