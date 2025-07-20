@@ -21,6 +21,10 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+vim.lsp.enable("phpactor");
+vim.lsp.config("phpactor", {
+});
+
 --vim.lsp.enable("rust-analyzer")
 --vim.lsp.config("rust-analyzer", {
 --  cmd = { "rust-analyzer" },

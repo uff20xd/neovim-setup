@@ -60,7 +60,7 @@ vim.opt.makeprg = "rustc build.rs && ./build"
 vim.cmd("set clipboard+=unnamedplus")
 
 -- Custom Commands
-vim.api.nvim_create_user_command("Je",
+vim.api.nvim_create_user_command("HH",
   function(opts)
     vim.cmd("noautocmd vnew | terminal " .. opts.fargs[1])
   end
