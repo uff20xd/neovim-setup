@@ -13,7 +13,7 @@ local variants = {
 
     color600 = '#303030',
     color700 = '#202020',
-    color800 = '#101010',
+    color800 = '#080808',
 
     --values?
     primary = '#FFBE89',
