@@ -27,8 +27,8 @@ end
 package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 
 -- Import individual plugin configs
-require("config.treesitter")
 require("config.telescope")
+require("config.treesitter")
 --require("config.mini")
 
 ---------------------------------------------------------------------------
@@ -48,7 +48,7 @@ vim.opt.scrolloff = 11
 
 -- Indent
 vim.opt.breakindent = true
-vim.opt.autoindent = true --vim.opt.smarttab = true            
+vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.linebreak = true
