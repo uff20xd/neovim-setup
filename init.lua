@@ -29,7 +29,7 @@ package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 -- Import individual plugin configs
 require("config.treesitter")
 require("config.telescope")
-require("config.mini")
+--require("config.mini")
 
 ---------------------------------------------------------------------------
 -- Config
