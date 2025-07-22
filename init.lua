@@ -56,7 +56,7 @@ vim.opt.softtabstop = 2
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
-vim.opt.wildmode = "full"
+vim.opt.wildmode = "longest:full,full"
 vim.opt.wildmenu = true
 
 -- Miscelaneas (too lazy to google the spelling)
