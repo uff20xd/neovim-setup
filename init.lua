@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------
--- Plugin Setup
+-- Setup Plugin Paths
 ---------------------------------------------------------------------------
 local home_dir = vim.env.HOME
 
@@ -25,11 +25,6 @@ end
 
 -- 3) Build the new package.path
 package.path = table.concat(lua_paths, ";") .. ";" .. package.path
-
--- Import individual plugin configs
-require("config.telescope")
-require("config.treesitter")
---require("config.mini")
 
 ---------------------------------------------------------------------------
 -- Config
@@ -249,3 +244,11 @@ vim.lsp.config("phpactor", {
 --  filetypes = {"rust"},
 --  single_file_support = true,
 --})
+
+
+---------------------------------------------------------------------------
+-- Plugin Imports
+---------------------------------------------------------------------------
+
+require("config.telescope")
+require("config.treesitter")
