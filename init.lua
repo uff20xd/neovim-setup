@@ -238,12 +238,12 @@ vim.lsp.config("phpactor", {
   },
 });
 
---vim.lsp.enable("rust-analyzer")
---vim.lsp.config("rust-analyzer", {
---  cmd = { "rust-analyzer" },
---  filetypes = {"rust"},
---  single_file_support = true,
---})
+vim.lsp.enable("rust-analyzer")
+vim.lsp.config("rust-analyzer", {
+  cmd = { "rust-analyzer" },
+  filetypes = {"rust"},
+  single_file_support = true,
+})
 
 
 ---------------------------------------------------------------------------
