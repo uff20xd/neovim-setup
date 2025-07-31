@@ -253,3 +253,4 @@ vim.lsp.config("phpactor", {
 require("config.telescope")
 require("config.treesitter")
 require("config.mini")
+require("config.vimtex")
