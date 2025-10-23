@@ -40,7 +40,9 @@ Emsym.catcher = function()
   end
 end
 
-vim.keymap.set('n', '<leader>ms', Emsym.catcher, { noremap = true, silent = true})
+Emsym.setup = function()
+  vim.keymap.set('n', '<leader>ms', Emsym.catcher, { noremap = true, silent = true})
+end
 --vim.keymap.set('i', '<C-b>', Emsym.catcher, { noremap = true, silent = true})
 
 return Emsym
