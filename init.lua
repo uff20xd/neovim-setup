@@ -17,7 +17,6 @@ local rp = api.nvim_list_runtime_paths()
 for _, path in ipairs(rp) do
   -- if there's a lua/ subfolder, add it
   local lua_dir = path .. "/lua"
-  print(lua_dir)
   if fn.isdirectory(lua_dir) == 1 then
     table.insert(lua_paths, 1, lua_dir .. "/?.lua")
     table.insert(lua_paths, 1, lua_dir .. "/?/init.lua")
