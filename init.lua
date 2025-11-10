@@ -139,18 +139,18 @@ vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 ---------------------------------------------------------------------------
 -- Netwr Config
 ---------------------------------------------------------------------------
-function ToggleNetRW()
-  if vim.bo.filetype == 'netrw' then
-    vim.api.nvim_command('Rex')
-    if vim.bo.filetype == 'netrw' then
-      vim.api.nvim_command('bdel')
-    end
-  else
-    vim.api.nvim_command('Ex')
-  end
-end
+--function ToggleNetRW()
+--  if vim.bo.filetype == 'netrw' then
+--    vim.api.nvim_command('Rex')
+--    if vim.bo.filetype == 'netrw' then
+--      vim.api.nvim_command('bdel')
+--    end
+--  else
+--    vim.api.nvim_command('Ex')
+--  end
+--end
 
-vim.api.nvim_command('command! ToggleNetRW lua ToggleNetRW()')
+--vim.api.nvim_command('command! ToggleNetRW lua ToggleNetRW()')
 
 local function Path()
   -- local path = vim.fn.expand('%:~:.') -- Relative
@@ -193,7 +193,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
-vim.g.netrw_banner = 0
+vim.g.netrw_banner = 1
 vim.g.netrw_liststyle = 1
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
