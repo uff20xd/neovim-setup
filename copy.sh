@@ -1,4 +1,4 @@
 rm -r ~/.config/nvim
-cp -rp ~/programming/configuration/neovim/. ~/.config/nvim
+cp -rp . ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
