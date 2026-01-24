@@ -60,6 +60,8 @@ Emsym.catching["not_superset_of"] = "⊉"
 Emsym.catching["element"] = "∈"
 Emsym.catching["union"] = "⋃"
 Emsym.catching["intersection"] = "⋃"
+Emsym.catching["concat"] = "∘"
+
 
 Emsym.catching["^1"] = "¹"
 Emsym.catching["^2"] = "²"
