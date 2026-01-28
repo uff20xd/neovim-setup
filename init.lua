@@ -86,23 +86,23 @@ vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
 
 -- Compilation
-vim.opt.makeprg = "rustc build.rs && ./build"
+-- vim.opt.makeprg = "rustc build.rs && ./build"
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
 
 -- Custom Commands
-vim.api.nvim_create_user_command("HH",
+vim.api.nvim_create_user_command("JJ",
   function(opts)
     vim.cmd("noautocmd vnew | terminal " .. opts.fargs[1])
   end
   ,{nargs = 1})
 
-vim.api.nvim_create_user_command("RR",
-  function()
-    vim.cmd("noautocmd vnew | terminal ./build")
-  end
-  ,{})
+-- vim.api.nvim_create_user_command("RR",
+--   function()
+--     vim.cmd("noautocmd vnew | terminal ./build")
+--   end
+--   ,{})
 
 
 ---------------------------------------------------------------------------
@@ -256,23 +256,13 @@ vim.lsp.config("phpactor", {
   },
 });
 
---vim.lsp.enable("rust-analyzer")
---vim.lsp.config("rust-analyzer", {
---  cmd = { "rust-analyzer" },
---  filetypes = {"rust"},
---  single_file_support = true,
---})
+vim.lsp.enable("rust-analyzer")
+vim.lsp.config("rust-analyzer", {
+  cmd = { "rust-analyzer" },
+  filetypes = {"rust"},
+  single_file_support = true,
+})
 
-vim.api.nvim_create_user_command("RustAnalyzerEnable",
-  function()
-    vim.lsp.enable("rust-analyzer")
-    vim.lsp.config("rust-analyzer", {
-      cmd = { "rust-analyzer" },
-      filetypes = {"rust"},
-      single_file_support = true,
-    })
-  end
-  ,{})
 
 ---------------------------------------------------------------------------
 -- Plugin Imports
