@@ -263,6 +263,16 @@ vim.lsp.config("phpactor", {
 --  single_file_support = true,
 --})
 
+vim.api.nvim_create_user_command("RustAnalyzerEnable",
+  function()
+    vim.lsp.enable("rust-analyzer")
+    vim.lsp.config("rust-analyzer", {
+      cmd = { "rust-analyzer" },
+      filetypes = {"rust"},
+      single_file_support = true,
+    })
+  end
+  ,{})
 
 ---------------------------------------------------------------------------
 -- Plugin Imports
