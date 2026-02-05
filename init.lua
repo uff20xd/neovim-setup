@@ -172,8 +172,8 @@ vim.api.nvim_create_autocmd('FileType', {
   end
 })
 
-vim.g.netrw_banner = 1
-vim.g.netrw_liststyle = 2
+vim.g.netrw_banner = 2
+vim.g.netrw_liststyle = 1
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
@@ -183,7 +183,7 @@ vim.g.netrw_sort_by = 'exten'
 ---------------------------------------------------------------------------
 -- LSP
 --------------------------------------------------------------------------
-vim.lsp.enable({"nixd", "pylsp", "phpactor"})
+vim.lsp.enable({"lua_ls", "nixd", "pylsp", "phpactor"})
 vim.lsp.config("nixd", {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
