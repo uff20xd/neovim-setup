@@ -40,6 +40,7 @@ vim.opt.syntax = "on"
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 11
+vim.opt.winborder = "single"
 
 -- Indent
 vim.opt.breakindent = true
@@ -51,13 +52,14 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
-
 -- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
+vim.opt.hlsearch = false
 vim.opt.wildmode = "longest:full,full"
 vim.opt.wildmenu = true
+vim.cmd("set completeopt+=noselect")
 
 -- Miscelaneas (too lazy to google the spelling)
 vim.opt.termguicolors = true
@@ -82,19 +84,16 @@ vim.opt.autoread = true
 vim.opt.autowrite = false
 
 -- Optimizations
-vim.opt.updatetime = 300
+vim.opt.updatetime = 200
 vim.opt.timeoutlen = 500
-
--- Compilation
--- vim.opt.makeprg = "rustc build.rs && ./build"
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
 
 -- Custom Commands
-vim.api.nvim_create_user_command("JJ",
+vim.api.nvim_create_user_command("Make",
   function(opts)
-    vim.cmd("noautocmd vnew | terminal " .. opts.fargs[1])
+    vim.cmd("!make" .. opts.fargs[1])
   end
   ,{nargs = 1})
 
@@ -114,43 +113,23 @@ vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })  -
 vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })  -- Quit Neovim
 vim.keymap.set('n', '<leader>e', ':e .<CR>', { noremap = true, silent = true })  -- Open file explorer
 vim.keymap.set('n', '<leader>t', ':terminal <CR>', { noremap = true, silent = true })  -- Open file explorer
-vim.keymap.set('n', '<leader>bf', ':b ', { noremap = true, silent = false})  -- Maybe finds a buffer
-vim.keymap.set('n', '<leader>bd', ':bdelete <CR>', { noremap = true, silent = true})  -- Closes a buffer
-vim.keymap.set('n', '<leader>ba', ':bnew ', { noremap = true, silent = false})  -- Adds a new buffer
--- vim.keymap.set('n', '<M-h>', ':wincmd h<CR> ', { noremap = true, silent = true})  -- Moving between windows
--- vim.keymap.set('n', '<M-j>', ':wincmd j<CR> ', { noremap = true, silent = true})  -- Moving between windows
--- vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
--- vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<M-k>', ':wincmd k<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<M-l>', ':wincmd l<CR> ', { noremap = true, silent = true})  -- Moving between windows
-vim.keymap.set('n', '<Tab>', ':bnext<CR> ', { noremap = true, silent = true})  -- Moving between buffer
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR> ', { noremap = true, silent = true})  -- Moving between buffer
+vim.keymap.set('n', '<leader>bd', ':bdelete! <CR>', { noremap = true, silent = true})  -- Closes a buffer
+-- vim.keymap.set('n', '<Tab>', ':bnext<CR> ', { noremap = true, silent = true})  -- Moving between buffer
+-- vim.keymap.set('n', '<S-Tab>', ':bprevious<CR> ', { noremap = true, silent = true})  -- Moving between buffer
 vim.keymap.set('n', '<leader>sv', ':vsplit<CR> ', { noremap = true, silent = true})  -- Splits vertically
 vim.keymap.set('n', '<leader>sh', ':split<CR> ', { noremap = true, silent = true})  -- Splits horizontally
 vim.keymap.set('n', '<leader>sd', ':wincmd q<CR> ', { noremap = true, silent = true})  -- closes split
-vim.keymap.set('n', 'Y', 'y$', { noremap = true, silent = true})  -- Yanks rest of the line
+vim.keymap.set('n', '<leader>st', 'noautocmd vnew | terminal ', { noremap = true, silent = true })  -- Open file explorer
+vim.keymap.set('n', 'Y', 'yy', { noremap = true, silent = true})  -- Yanks rest of the line
 
 vim.keymap.set("i", "<C-j>", "<", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", ">", { noremap = true, silent = true })
-vim.keymap.set("", "Ö", ":", { noremap = true, silent = false })
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 ---------------------------------------------------------------------------
 -- Netwr Config
 ---------------------------------------------------------------------------
---function ToggleNetRW()
---  if vim.bo.filetype == 'netrw' then
---    vim.api.nvim_command('Rex')
---    if vim.bo.filetype == 'netrw' then
---      vim.api.nvim_command('bdel')
---    end
---  else
---    vim.api.nvim_command('Ex')
---  end
---end
-
---vim.api.nvim_command('command! ToggleNetRW lua ToggleNetRW()')
 
 local function Path()
   -- local path = vim.fn.expand('%:~:.') -- Relative
@@ -194,7 +173,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.g.netrw_banner = 1
-vim.g.netrw_liststyle = 1
+vim.g.netrw_liststyle = 2
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
@@ -203,14 +182,13 @@ vim.g.netrw_sort_by = 'exten'
 
 ---------------------------------------------------------------------------
 -- LSP
----------------------------------------------------------------------------
-vim.lsp.enable("nixd")
+--------------------------------------------------------------------------
+vim.lsp.enable({"nixd", "pylsp", "phpactor"})
 vim.lsp.config("nixd", {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
   root_markers = { 'flake.nix', 'git' },
 })
-vim.lsp.enable("lua_ls")
 vim.lsp.config("lua_ls", {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -226,7 +204,6 @@ vim.lsp.config("lua_ls", {
   },
 })
 
-vim.lsp.enable("pylsp")
 vim.lsp.config("pylsp", {
     cmd = { 'pylsp' },
     filetypes = { 'python' },
@@ -255,21 +232,20 @@ vim.lsp.config("phpactor", {
     '.git',
   },
 });
-
--- vim.lsp.enable("rust-analyzer")
--- vim.lsp.config("rust-analyzer", {
---   cmd = { "rust-analyzer" },
---   filetypes = {"rust"},
---   single_file_support = true,
--- })
-
+api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
+    end
+  end
+})
 
 ---------------------------------------------------------------------------
 -- Plugin Imports
 ---------------------------------------------------------------------------
 
-require("config.telescope")
 require("config.treesitter")
 require("config.mini")
 require("config.vimtex")
-require("emsym").setup()
+require "emsym".setup()

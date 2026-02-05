@@ -1,13 +1,9 @@
-require('mini.ai').setup()         -- a/i textobjects
-require('mini.align').setup()      -- aligning
-require('mini.bracketed').setup()  -- unimpaired bindings with TS
-require('mini.comment').setup()    -- TS-wise comments
-require('mini.icons').setup()      -- minimal icons
--- require('mini.jump').setup()       -- fFtT work past a line
-require('mini.pairs').setup()      -- pair brackets
--- require('mini.statusline').setup() -- minimal statusline
--- require('mini.surround').setup({   -- surround
---   custom_surroundings = {
---     ['l'] = { output = { left = '[', right = ']()'}}
---   }
--- })
+require "mini.pick".setup()
+require 'mini.icons'.setup()
+require 'mini.pairs'.setup()
+
+-- require('mini.ai').setup()
+
+vim.keymap.set('n', '<leader>bf', ':Pick buffers<CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { noremap = true, silent = true})
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { noremap = true, silent = true})
