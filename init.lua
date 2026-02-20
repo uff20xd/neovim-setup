@@ -1,3 +1,5 @@
+local use_optional_plugins = false;
+
 ---------------------------------------------------------------------------
 -- Setup Plugin Paths
 ---------------------------------------------------------------------------
@@ -68,7 +70,7 @@ vim.opt.conceallevel = 0
 vim.opt.ruler = true
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.lazyredraw = true
 vim.opt.cmdheight = 1
 vim.opt.showmatch = true
@@ -86,6 +88,7 @@ vim.opt.autowrite = false
 -- Optimizations
 vim.opt.updatetime = 200
 vim.opt.timeoutlen = 500
+
 
 -- Clipboard
 vim.cmd("set clipboard+=unnamedplus")
@@ -125,7 +128,7 @@ vim.keymap.set('n', 'Y', 'yy', { noremap = true, silent = true})  -- Yanks rest 
 vim.keymap.set("i", "<C-j>", "<", { noremap = true, silent = true })
 vim.keymap.set("i", "<C-k>", ">", { noremap = true, silent = true })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 ---------------------------------------------------------------------------
 -- Netwr Config
@@ -244,8 +247,14 @@ api.nvim_create_autocmd('LspAttach', {
 ---------------------------------------------------------------------------
 -- Plugin Imports
 ---------------------------------------------------------------------------
-
-require("config.treesitter")
-require("config.mini")
-require("config.vimtex")
+if use_optional_plugins then
+  vim.pack.add({
+    {src = "https://github.com/nvim-lua/plenary.nvim"},
+    {src = "https://github.com/Massolari/neoment"},
+  })
+  require "config.neoment"
+end
+require "config.treesitter"
+require "config.mini"
+require "config.vimtex"
 require "emsym".setup()
