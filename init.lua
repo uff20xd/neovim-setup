@@ -146,7 +146,7 @@ vim.opt.ruler = true
 vim.opt.wrap = false
 vim.opt.signcolumn = "yes"
 vim.opt.showmode = true
-vim.opt.lazyredraw = true
+vim.opt.lazyredraw = false
 vim.opt.cmdheight = 1
 vim.opt.showmatch = true
 vim.opt.splitright = true
@@ -242,7 +242,7 @@ vim.api.nvim_create_autocmd('FileType', {
     local unbinds = {
       'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp','i','I', 'mb', 'md',
       'me', 'mg', 'mh', 'mr', 'mt', 'mT', 'mu', 'mv', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
-      'qL', 'S', 't', 'u', 'U',  'X'
+      'qL', 'S', 't', 'u', 'U',  'X', 's'
     }
     for _, value in pairs(unbinds) do
       vim.keymap.set('n', value, '<CMD>lua print("Keybind \'' .. value .. '\' has been removed")<CR>', { noremap = true, silent = true, buffer = true })
