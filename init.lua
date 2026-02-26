@@ -261,8 +261,13 @@ require "config.vimtex"
 require "plugins.emsym"
 require "postcmd".with_keymaps()
 require "plugins.icons"
+local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
-if true then
+if treesitter then
+  treesitter.setup()
+  treesitter.install { "rust", "zig", "markdown", "asm", "python", "haskell" }
+end
+if mini_pick then
   mini_pick.setup()
   vim.keymap.set('n', '<leader>bf', ':Pick buffers<CR>', { noremap = true, silent = true})
   vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { noremap = true, silent = true})
