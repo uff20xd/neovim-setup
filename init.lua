@@ -28,85 +28,11 @@ end
 -- 3) Build the new package.path
 package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 
----------------------------------------------------------------------------
--- small Postcmd for Toggleterminal etc without plugin
----------------------------------------------------------------------------
-
--- local postcmd = {}
--- 
--- local vim = vim
--- local vapi = vim.api
--- 
--- postcmd.init_config = function(opts)
---   opts = opts or {}
---   postcmd.config = {
---     winconf = postcmd.init_winconf(opts.winconf or {}),
---     binding_file = opts.binding_file or "/tmp/postcmd.sh",
---     time_compile = opts.time_compile or false,
---   }
--- end
--- 
--- postcmd.init_winconf = function(opts)
---   opts = opts or {}
---   local width = opts.width or math.floor(vim.o.columns * 0.8)
---   local height = opts.height or math.floor(vim.o.lines * 0.8)
--- 
---   local col = math.floor((vim.o.columns - width) / 2)
---   local row = math.floor((vim.o.lines - height) / 2)
--- 
---   local winconf = {
---     relative = opts.relative or "editor",
---     height = height,
---     width = width,
---     row = row,
---     col = col,
---     style = opts.style or "minimal",
---     border = opts.border or "rounded",
---   }
---   return winconf
--- end
--- 
--- postcmd.create_buf_win_pair = function(opts)
---   opts = opts or {}
---   local buf = nil
---   if vapi.nvim_buf_is_valid(opts.buf) then
---     buf = opts.buf
---   else
---     buf = vapi.nvim_create_buf(false, true)
---   end
--- 
---   -- vapi.nvim_buf_set_name(buf, opts.name or vapi.nvim_buf_get_name(buf))
---   local win = vapi.nvim_open_win(buf, true, postcmd.config.winconf)
---   return {buf = buf, win = win}
--- end
--- 
--- postcmd.toggle_floating_term = function()
---   postcmd.term = postcmd.term or { buf = -1, win = -1 }
---   if not vapi.nvim_win_is_valid(postcmd.term.win) then
---     postcmd.term = postcmd.create_buf_win_pair({buf = postcmd.term.buf, name = "[Postcmd Terminal]"})
---     if vim.bo[postcmd.term.buf].buftype ~= "terminal" then
---       vim.cmd.terminal()
---     end
---   else
---     vapi.nvim_win_hide(postcmd.term.win)
---   end
--- end
--- 
--- postcmd.toggle_scratch = function()
---   postcmd.scratch = postcmd.scratch or postcmd.create_buf_win_pair({name = "[Postcmd Scratch]"})
---   if not vapi.nvim_win_is_valid(postcmd.scratch.win) then
---     postcmd.term = postcmd.create_buf_win_pair({buf = postcmd.scratch.buf})
---   else
---     vapi.nvim_win_hide(postcmd.scratch.win)
---   end
--- end
--- 
--- postcmd.init_config()
--- 
----------------------------------------------------------------------------
--- Config
----------------------------------------------------------------------------
 vim.opt.encoding = 'utf-8'
+
+---------------------------------------------------------------------------
+-- Keymaps
+---------------------------------------------------------------------------
 
 -- Basic
 vim.opt.undofile = true
@@ -139,6 +65,9 @@ vim.opt.wildmenu = true
 vim.cmd("set completeopt+=noselect")
 
 -- Miscelaneas (too lazy to google the spelling)
+vim.g.markdown_minlines = 500
+vim.g.markdown_fenced_languages = {'html', 'python', 'bash=sh', 'rust', 'c', 'cpp', 'nix'}
+vim.g.markdown_recommended_style = 1
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.conceallevel = 0
@@ -192,18 +121,12 @@ vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })  -
 vim.keymap.set('n', '<leader>e', ':e .<CR>', { noremap = true, silent = true })  -- Open file explorer
 vim.keymap.set('n', '<leader>t', ':terminal <CR>', { noremap = false, silent = true })  -- Open file explorer
 vim.keymap.set('n', '<leader>bd', ':bdelete! <CR>', { noremap = true, silent = true})  -- Closes a buffer
--- vim.keymap.set('n', '<Tab>', ':bnext<CR> ', { noremap = true, silent = true})  -- Moving between buffer
--- vim.keymap.set('n', '<S-Tab>', ':bprevious<CR> ', { noremap = true, silent = true})  -- Moving between buffer
-vim.keymap.set('n', '<leader>sv', ':vsplit<CR> ', { noremap = true, silent = true})  -- Splits vertically
-vim.keymap.set('n', '<leader>sh', ':split<CR> ', { noremap = true, silent = true})  -- Splits horizontally
-vim.keymap.set('n', '<leader>sd', ':wincmd q<CR> ', { noremap = true, silent = true})  -- closes split
-vim.keymap.set('n', '<leader>st', 'noautocmd vnew | terminal ', { noremap = true, silent = true })  -- Open file explorer
 vim.keymap.set('n', 'Y', 'yy', { noremap = true, silent = true})  -- Yanks rest of the line
 
-vim.keymap.set("i", "<C-j>", "<", { noremap = true, silent = true })
-vim.keymap.set("i", "<C-k>", ">", { noremap = true, silent = true })
+vim.keymap.set({"i", "n"}, "<C-j>", "<", { noremap = true, silent = true })
+vim.keymap.set({"i", "n"}, "<C-k>", ">", { noremap = true, silent = true })
 
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 ---------------------------------------------------------------------------
 -- Netwr Config
@@ -217,9 +140,9 @@ end
 
 WinBarNetRW = function()
   return table.concat {
-  Path(),
-  "%=",
-  "%<",
+    Path(),
+    "%=",
+    "%<",
   }
 end
 
@@ -231,18 +154,20 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.api.nvim_command('setlocal buftype=nofile')
     vim.api.nvim_command('setlocal bufhidden=wipe')
     vim.opt_local.winbar = '%!v:lua.WinBarNetRW()'
-    vim.keymap.set('n', '<C-C>', '<CMD>ToggleNetRW<CR>', { noremap = true, silent = true, buffer = true })
-    vim.keymap.set('n', '<leader>e', '<CMD>ToggleNetRW<CR>', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'e', '<CMD>Ex ~<CR>', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'w', '<CMD>Ex ' .. vim.fn.getcwd() .. '<CR>', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'h', '-', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'l', '<CR>', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'r', 'R', { remap = true, silent = true, buffer = true })
     vim.keymap.set('n', 'c', ':cd %<CR>', { remap = true, silent = true, buffer = true })
+    local _none = {
+      '<c-h>', 'a', 'C', 'gp', 'mf', 'mb', 'mB', 'mz', 'gb', 'qb', 'gn', 'mt', 'mT', 'md', 'me', 'cb', 'mr',
+    }
+
     local unbinds = {
-      'a', '<F1>', '<del>', '<c-h>', '<c-r>', '<c-tab>', 'C', 'gb', 'gd', 'gf', 'gn', 'gp','i','I', 'mb', 'md',
-      'me', 'mg', 'mh', 'mr', 'mt', 'mT', 'mu', 'mv', 'mX', 'mz', 'o', 'O', 'p', 'P', 'qb', 'qf', 'qF',
-      'qL', 'S', 't', 'u', 'U',  'X', 's'
+      '<F1>', '<del>', '<c-r>', '<c-tab>', 'gd', 'gf', 'I', 'mx',
+      'mg', 'mh', 'mu', 'mv', 'mX', 'o', 'O', 'p', 'P',  'qf', 'qF',
+      'qL', 'S', 't', 'u', 'U',  'X', 's',
     }
     for _, value in pairs(unbinds) do
       vim.keymap.set('n', value, '<CMD>lua print("Keybind \'' .. value .. '\' has been removed")<CR>', { noremap = true, silent = true, buffer = true })
@@ -252,6 +177,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.g.netrw_banner = 2
 vim.g.netrw_liststyle = 1
+-- vim.g.netrw_preview = 1
 vim.g.netrw_bufsettings = 'nonu nornu noma ro nobl'
 vim.g.netrw_browse_split = 0 -- (4 to open in other window)
 vim.g.netrw_altfile = 0 -- (4 to open in other window)
@@ -260,8 +186,8 @@ vim.g.netrw_sort_by = 'exten'
 
 ---------------------------------------------------------------------------
 -- LSP
---------------------------------------------------------------------------
-vim.lsp.enable({"lua_ls", "nixd", "pylsp", "phpactor"})
+---------------------------------------------------------------------------
+vim.lsp.enable({"lua_ls", "nixd", "pylsp", "phpactor", "marksman"})
 vim.lsp.config("nixd", {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
@@ -310,6 +236,7 @@ vim.lsp.config("phpactor", {
     '.git',
   },
 });
+
 api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
@@ -329,8 +256,14 @@ if use_optional_plugins then
   })
   require "config.neoment"
 end
-require "config.treesitter"
-require "config.mini"
-require "config.vimtex"
-require "emsym".setup()
-require "postcmd".with_keymaps()
+
+local _ = require "config.vimtex"
+local _, _ = require "plugins.emsym"
+local _ = require "postcmd".with_keymaps()
+local ok, mod = require "plugins.icons"
+local ok, _ = pcall(require, "plugins.pick")
+if ok then
+  vim.keymap.set('n', '<leader>bf', ':Pick buffers<CR>', { noremap = true, silent = true})
+  vim.keymap.set('n', '<leader>f', ':Pick files<CR>', { noremap = true, silent = true})
+  vim.keymap.set('n', '<leader>h', ':Pick help<CR>', { noremap = true, silent = true})
+end
