@@ -55,12 +55,13 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 
+
 -- Search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
-vim.opt.wildmode = "longest:full,full"
+vim.opt.wildmode = "noselect:full"
 vim.opt.wildmenu = true
 vim.cmd("set completeopt+=noselect")
 
@@ -267,6 +268,7 @@ require "plugins.pairs".setup({})
 require "plugins.git".setup({})
 require "plugins.hipatterns".setup({})
 require "plugins.cmdline".setup({})
+require "plugins.completion".setup({})
 local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
 if treesitter then
