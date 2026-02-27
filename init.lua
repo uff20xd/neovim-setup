@@ -1,5 +1,4 @@
 local use_optional_plugins = false;
-
 ---------------------------------------------------------------------------
 -- Setup Plugin Paths
 ---------------------------------------------------------------------------
@@ -135,17 +134,18 @@ km("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 ---------------------------------------------------------------------------
 -- Autocommands
 ---------------------------------------------------------------------------
-local au = function(event, pattern, callback, desc)
-  vim.api.nvim_create_autocmd(event, { group = gr, pattern = pattern, callback = callback, desc = desc })
-end
+-- local au = function(event, pattern, callback, desc)
+--   vim.api.nvim_create_autocmd(event, { group = gr, pattern = pattern, callback = callback, desc = desc })
+-- end
+-- au("BufEnter", "*.rs", vim.treesitter.start, "Activete treesitter for Rust files")
 
-local trigger_wild = function()
-  -- Not triggerring when wildmenu is shown helps avoiding trigger after
-  -- manually pressing wildchar (as text is also changes).
-  if vim.fn.wildmenumode() == 1 then return end
-  -- Type `<C-z>` which is "Trigger 'wildmode', but always available."
-  vim.api.nvim_feedkeys('\26', 'nt', false)
-end
+-- local trigger_wild = function()
+--   -- Not triggerring when wildmenu is shown helps avoiding trigger after
+--   -- manually pressing wildchar (as text is also changes).
+--   if vim.fn.wildmenumode() == 1 then return end
+--   -- Type `<C-z>` which is "Trigger 'wildmode', but always available."
+--   vim.api.nvim_feedkeys('\26', 'nt', false)
+-- end
 -- au('CmdlineEnter', '*', trigger_wild, 'Act on command line enter')
 -- au('CmdlineChanged', '*', trigger_wild, 'Act on command line change')
 ---------------------------------------------------------------------------
