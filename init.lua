@@ -31,7 +31,7 @@ package.path = table.concat(lua_paths, ";") .. ";" .. package.path
 vim.opt.encoding = 'utf-8'
 
 ---------------------------------------------------------------------------
--- Keymaps
+-- Config
 ---------------------------------------------------------------------------
 
 -- Basic
@@ -44,6 +44,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 11
 vim.opt.winborder = "single"
+vim.cmd("filetype plugin on")
 
 -- Indent
 vim.opt.breakindent = true
@@ -117,18 +118,36 @@ vim.api.nvim_create_user_command("Make",
 ---------------------------------------------------------------------------
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })  -- Save file
-vim.keymap.set('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })  -- Quit Neovim
-vim.keymap.set('n', '<leader>e', ':e .<CR>', { noremap = true, silent = true })  -- Open file explorer
-vim.keymap.set('n', '<leader>t', ':terminal <CR>', { noremap = false, silent = true })  -- Open file explorer
-vim.keymap.set('n', '<leader>bd', ':bdelete! <CR>', { noremap = true, silent = true})  -- Closes a buffer
-vim.keymap.set('n', 'Y', 'yy', { noremap = true, silent = true})  -- Yanks rest of the line
+local km = function(mode, trigger, action, config)
+  vim.keymap.set(mode, trigger, action, config)
+end
 
-vim.keymap.set({"i", "n"}, "<C-j>", "<", { noremap = true, silent = true })
-vim.keymap.set({"i", "n"}, "<C-k>", ">", { noremap = true, silent = true })
+km('n', '<leader>w', ':w<CR>', { noremap = true, silent = true })  -- Save file
+km('n', '<leader>q', ':q<CR>', { noremap = true, silent = true })  -- Quit Neovim
+km('n', '<leader>e', ':e .<CR>', { noremap = true, silent = true })  -- Open file explorer
+km('n', '<leader>t', ':terminal <CR>', { noremap = false, silent = true })  -- Open file explorer
+km('n', '<leader>bd', ':bdelete! <CR>', { noremap = true, silent = true})  -- Closes a buffer
+km('n', 'Y', 'y$', { noremap = true, silent = true})  -- Yanks rest of the line
+km({"i", "n"}, "<C-j>", "<", { noremap = true, silent = true })
+km({"i", "n"}, "<C-k>", ">", { noremap = true, silent = true })
+km("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+---------------------------------------------------------------------------
+-- Autocommands
+---------------------------------------------------------------------------
+local au = function(event, pattern, callback, desc)
+  vim.api.nvim_create_autocmd(event, { group = gr, pattern = pattern, callback = callback, desc = desc })
+end
 
+local trigger_wild = function()
+  -- Not triggerring when wildmenu is shown helps avoiding trigger after
+  -- manually pressing wildchar (as text is also changes).
+  if vim.fn.wildmenumode() == 1 then return end
+  -- Type `<C-z>` which is "Trigger 'wildmode', but always available."
+  vim.api.nvim_feedkeys('\26', 'nt', false)
+end
+-- au('CmdlineEnter', '*', trigger_wild, 'Act on command line enter')
+-- au('CmdlineChanged', '*', trigger_wild, 'Act on command line change')
 ---------------------------------------------------------------------------
 -- Netwr Config
 ---------------------------------------------------------------------------
@@ -238,14 +257,14 @@ vim.lsp.config("phpactor", {
   },
 });
 
-api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
-    end
-  end
-})
+-- api.nvim_create_autocmd('LspAttach', {
+--   callback = function(ev)
+--     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+--     if client:supports_method('textDocument/completion') then
+--       vim.lsp.completion.enable(true, client.id, ev.buf, {autotrigger = true})
+--     end
+--   end
+-- })
 
 ---------------------------------------------------------------------------
 -- Plugin Imports
@@ -266,8 +285,7 @@ require "postcmd".with_keymaps()
 require "plugins.icons"
 require "plugins.pairs".setup({})
 require "plugins.git".setup({})
-require "plugins.hipatterns".setup({})
-require "plugins.cmdline".setup({})
+require "plugins.cmdline".setup({autocorrect = {enable = false}})
 require "plugins.completion".setup({})
 local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
