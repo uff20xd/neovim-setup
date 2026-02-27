@@ -261,6 +261,10 @@ require "config.vimtex"
 require "plugins.emsym"
 require "postcmd".with_keymaps()
 require "plugins.icons"
+require "plugins.pairs"
+require "plugins.git"
+require "plugins.hipatterns"
+require "plugins.cmdline"
 local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
 if treesitter then
