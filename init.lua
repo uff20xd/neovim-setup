@@ -256,15 +256,17 @@ if use_optional_plugins then
   })
   require "config.neoment"
 end
-
+-- autocmd for cmd
+-- vim.schedule
+-- vim.fn.wildtrigger()
 require "config.vimtex"
 require "plugins.emsym"
 require "postcmd".with_keymaps()
 require "plugins.icons"
-require "plugins.pairs"
-require "plugins.git"
-require "plugins.hipatterns"
-require "plugins.cmdline"
+require "plugins.pairs".setup({})
+require "plugins.git".setup({})
+require "plugins.hipatterns".setup({})
+require "plugins.cmdline".setup({})
 local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
 if treesitter then
