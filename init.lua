@@ -208,7 +208,7 @@ vim.g.netrw_sort_by = 'exten'
 ---------------------------------------------------------------------------
 -- LSP
 ---------------------------------------------------------------------------
-vim.lsp.enable({"lua_ls", "nixd", "pylsp", "phpactor", "marksman"})
+vim.lsp.enable({"lua_ls", "nixd", "pylsp", "phpactor", "marksman", "haskell-language-server"})
 vim.lsp.config("nixd", {
   cmd = { 'nixd' },
   filetypes = { 'nix' },
