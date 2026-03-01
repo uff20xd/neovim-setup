@@ -229,7 +229,7 @@ require "postcmd".with_keymaps()
 require "plugins.icons"
 require "plugins.pairs".setup({})
 require "plugins.git".setup({})
-require "plugins.cmdline".setup({autocorrect = {enable = false}})
+-- require "plugins.cmdline".setup({autocorrect = {enable = false}})
 require "plugins.completion".setup({})
 local treesitter = require "nvim-treesitter"
 local mini_pick = require "plugins.pick"
