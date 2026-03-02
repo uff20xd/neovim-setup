@@ -225,10 +225,10 @@ end
 -- vim.fn.wildtrigger()
 require "config.vimtex"
 require "plugins.emsym"
-require "postcmd".with_keymaps()
 require "plugins.icons"
 require "plugins.pairs".setup({})
 require "plugins.git".setup({})
+require "plugins.postvim".setup({})
 -- require "plugins.cmdline".setup({autocorrect = {enable = false}})
 require "plugins.completion".setup({})
 local treesitter = require "nvim-treesitter"
