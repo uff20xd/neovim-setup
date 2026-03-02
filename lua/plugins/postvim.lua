@@ -153,16 +153,16 @@ buffer_menu.open = function(opts)
     end
   end
   vim.keymap.set("n", conf.select_key_bind, function() buffer_menu.select_buf(conf, buffer_list, menu_buf, current_win) end, {noremap = true, silent = true, buffer = menu_buf})
-  vim.keymap.set("n", conf.save_key_bind, function() buffer_menu.save_menu(conf, buffer_list, menu_buf, current_win) end, {noremap = true, silent = true, buffer = menu_buf})
+  vim.keymap.set("n", conf.save_key_bind, function() buffer_menu.save_menu(conf, buffer_list, current_win, menu_buf, menu_win) end, {noremap = true, silent = true, buffer = menu_buf})
   return {buf = menu_buf, win = menu_win}
 end
 
 
-buffer_menu.save_menu = function(opts, buf_list, buf, current_win)
-  local buf_len = vapi.nvim_buf_line_count(buf)
+buffer_menu.save_menu = function(opts, buf_list, current_win, menu_buf, menu_win)
+  local buf_len = vapi.nvim_buf_line_count(menu_buf)
   local new_list = {}
   for i = 1, buf_len do
-    local new_buf_name = vapi.nvim_buf_get_lines(buf, i - 1, i, false)[1]
+    local new_buf_name = vapi.nvim_buf_get_lines(menu_buf, i - 1, i, false)[1]
     new_list[new_buf_name] = buf_list[new_buf_name]
   end
   for k, v in pairs(buf_list) do
@@ -171,7 +171,8 @@ buffer_menu.save_menu = function(opts, buf_list, buf, current_win)
     end
   end
   -- vapi.nvim_buf_delete(buf_list[new_buf_name], {})
-  vapi.nvim_buf_delete(buf, {})
+  vapi.nvim_win_close(menu_win, {})
+  vapi.nvim_buf_delete(menu_buf, {})
 end
 
 postvim.buffer_menu = buffer_menu
