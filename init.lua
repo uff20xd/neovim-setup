@@ -44,6 +44,8 @@ vim.opt.relativenumber = true
 vim.opt.scrolloff = 11
 vim.opt.winborder = "single"
 vim.cmd("filetype plugin on")
+vim.cmd("set list")
+vim.cmd("set lcs+=lead:\\|")
 
 -- Indent
 vim.opt.breakindent = true
@@ -184,7 +186,6 @@ vim.api.nvim_create_autocmd('FileType', {
     local _none = {
       '<c-h>', 'a', 'C', 'gp', 'mf', 'mb', 'mB', 'mz', 'gb', 'qb', 'gn', 'mt', 'mT', 'md', 'me', 'cb', 'mr',
     }
-
     local unbinds = {
       '<F1>', '<del>', '<c-r>', '<c-tab>', 'gd', 'gf', 'I', 'mx',
       'mg', 'mh', 'mu', 'mv', 'mX', 'o', 'O', 'p', 'P',  'qf', 'qF',
