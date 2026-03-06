@@ -130,6 +130,9 @@ km('n', '<leader>t', ':terminal <CR>', { noremap = false, silent = true })  -- O
 km('n', '<leader>bd', ':bdelete! <CR>', { noremap = true, silent = true})  -- Closes a buffer
 km('n', 'Y', 'y$', { noremap = true, silent = true})  -- Yanks rest of the line
 km('n', '<leader>xt', vim.treesitter.start, { noremap = true, silent = true})  -- Yanks rest of the line
+km('n', '<leader>cn', ":cnext<CR>", { noremap = true, silent = true})  -- Yanks rest of the line
+km('n', '<leader>cm', ":make b<CR>", { noremap = true, silent = true})  -- Yanks rest of the line
+km('n', '<leader>co', ":copen<CR>", { noremap = true, silent = true})  -- Yanks rest of the line
 km({"i", "n"}, "<C-j>", "<", { noremap = true, silent = true })
 km({"i", "n"}, "<C-k>", ">", { noremap = true, silent = true })
 km("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
