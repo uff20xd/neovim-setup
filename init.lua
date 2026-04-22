@@ -226,7 +226,7 @@ if use_optional_plugins then
   require "config.neoment"
 end
 if use_experimental_ui then
-  require("vim.__core.ui2").enable()
+  require("vim._core.ui2").enable({})
 end
 -- autocmd for cmd
 -- vim.schedule
