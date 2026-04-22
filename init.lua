@@ -1,5 +1,5 @@
 local use_optional_plugins = false;
-local use_experimental_ui = true;
+local use_experimental_ui = false;
 ---------------------------------------------------------------------------
 -- Setup Plugin Paths
 ---------------------------------------------------------------------------
